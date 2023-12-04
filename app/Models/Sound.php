@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Sound extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    public $hidden = ['deleted_at'];
 }

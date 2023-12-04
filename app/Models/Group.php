@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Group extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    public $hidden = ['deleted_at'];
+
 }
