@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description', 100);
             $table->string('url', 200);
             $table->float('price', 2, 2);
+            $table->softDeletes()->nullable();
         });
     }
 
