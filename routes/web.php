@@ -3,6 +3,7 @@
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\GroupContrller;
 use App\Http\Controllers\PlayListController;
+use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SoundContrller;
 use App\Http\Controllers\TypeContrller;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +55,10 @@ Route::post('/playList', [PlayListController::class, 'store']);
 Route::get('/playList/{id}', [PlayListController::class, 'show']);
 Route::put('/playList/{id}', [PlayListController::class, 'edit']);
 Route::delete('/playList/{id}', [PlayListController::class, 'destroy']);
+
+
+
+Route::post('/sample', [SampleController::class, 'store']);
+Route::get('/sample', [SampleController::class, 'show']);
+Route::put('/sample/{id}', [SampleController::class, 'edit']);
+Route::get('/sample/byfilter', [SampleController::class, 'showByFilter']);

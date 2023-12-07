@@ -43,7 +43,7 @@ class GroupContrller extends Controller
     
 
         $group = $this->groupService->findById($id);
-        if ($group) {
+        if (!empty($group)) {
             return response()->json($group);
         } {
             return response()->json('somesthing was bad, check it', 400);
