@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\PlayList as ModelsPlayList;
+use App\Models\PlayList;
 use App\Services\PlayListService;
 use Illuminate\Http\Request;
 
@@ -53,7 +53,7 @@ class PlayListController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request, ModelsPlayList $id)
+    public function edit(Request $request, PlayList $id)
     {
         $request->validate([
             'name' => 'required|max:20|min:6'

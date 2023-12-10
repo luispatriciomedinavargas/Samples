@@ -64,8 +64,6 @@ class SampleController extends Controller
             "gender_id" => 'numeric|nullable',
             "sound_id" => 'numeric|nullable',
         ]);
-        \Log::error($request->all());
-        \Log::error($Id);
         
         $updateSample = $this->sampleService->updateSample($request->all(), $Id);
 

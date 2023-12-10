@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Gender;
 use App\Models\Group;
 use App\Models\PlayList;
+use App\Models\PlayListSample;
 use App\Models\Sample;
 use App\Models\Sound;
 use App\Models\Type;
@@ -14,7 +15,9 @@ use App\Services\PlayListService;
 use App\Services\SamplesService;
 use App\Services\SoundService;
 use App\Services\TypeService;
+use App\Services\PlayList_SampleService;
 use Illuminate\Support\ServiceProvider;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(PlayList::class, PlayList::class);
         $this->app->bind(SamplesService::class, SamplesService::class);
         $this->app->bind(Sample::class, Sample::class);
+        $this->app->bind(PlayList_SampleService::class, PlayList_SampleService::class);
+        $this->app->bind(PlayListSample::class, PlayListSample::class);
     }
 
     /**

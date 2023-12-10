@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\GroupContrller;
+use App\Http\Controllers\PlayList_SampleController;
 use App\Http\Controllers\PlayListController;
 use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SoundContrller;
@@ -62,3 +63,6 @@ Route::post('/sample', [SampleController::class, 'store']);
 Route::get('/sample', [SampleController::class, 'show']);
 Route::put('/sample/{id}', [SampleController::class, 'edit']);
 Route::get('/sample/byfilter', [SampleController::class, 'showByFilter']);
+
+
+Route::post('/playlist_sample', [PlayList_SampleController::class, 'create']);
