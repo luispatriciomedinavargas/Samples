@@ -40,13 +40,11 @@ class SoundContrller extends Controller
      */
     public function show($id)
     {
-    
-
         $sound = $this->soundService->findById($id);
-        if ($sound) {
+        if (!empty($sound)) {
             return response()->json($sound);
-        } {
-            return response()->json('somesthing was bad, check it', 400);
+        } else {
+            return response()->json('id not found, please check it', 404);
         }
 
     }
@@ -54,7 +52,7 @@ class SoundContrller extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request,Sound $id)
+    public function edit(Request $request, Sound $id)
     {
 
         $request->validate([

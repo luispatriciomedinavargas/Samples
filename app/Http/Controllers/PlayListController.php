@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Group;
-use App\Services\GroupService;
+use App\Models\PlayList;
+use App\Services\PlayListService;
 use Illuminate\Http\Request;
 
-class GroupContrller extends Controller
+class PlayListController extends Controller
 {
-    protected $groupService;
-    public function __construct(GroupService $groupService)
+
+
+
+    protected $playListService;
+    public function __construct(PlayListService $playListService)
     {
-        $this->groupService = $groupService;
+        $this->playListService = $playListService;
     }
-
-
 
 
     /**
@@ -24,45 +25,41 @@ class GroupContrller extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description' => 'required|max:100|min:15'
+            'name' => 'required|max:20|min:6',
+            'user_id' => 'required'
         ]);
+        $newPlayList = $this->playListService->newPlayList($request->all());
 
-        $group = $this->groupService->createGroup($request->all());
-        if ($group) {
-            return response()->json($group);
+        if ($newPlayList) {
+            return response()->json($newPlayList);
         } {
-            return response()->json('somesthing was bad, check  it', 400);
+            return response()->json('somesthing was bad, check it', 400);
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $idUser)
     {
-    
-
-        $group = $this->groupService->findById($id);
-        if (!empty($group)) {
-            return response()->json($group);
+        $playList = $this->playListService->findByUser($idUser);
+        if ($playList) {
+            return response()->json($playList);
         } {
             return response()->json('somesthing was bad, check it', 400);
         }
-
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request,Group $id)
+    public function edit(Request $request, PlayList $id)
     {
-
         $request->validate([
-            'description' => 'required|max:100|min:15'
+            'name' => 'required|max:20|min:6'
         ]);
-
-        $group = $this->groupService->updateGroup($request->all(),$id);
-        if ($group) {
+        $playList = $this->playListService->updateName($request->all(), $id);
+        if ($playList) {
             return response()->json('The id ' . $id->id . ' was updated correctly');
         } {
             return response()->json('somesthing was bad, check it', 400);
@@ -75,19 +72,12 @@ class GroupContrller extends Controller
      */
     public function destroy(string $id)
     {
-      
-        $group = $this->groupService->deleteGroup($id);
+        $group = $this->playListService->deletePlayList($id);
 
         if ($group) {
             return response()->json('The id ' . $id . ' was deleted correctly');
         } {
             return response()->json('somesthing was bad, check it', 400);
         }
-    }
-
-    public function showAll(){
-        
-
-        return response()->json($this->groupService->returnAllGroups());
     }
 }

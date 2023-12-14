@@ -45,7 +45,7 @@ class GenderController extends Controller
     
 
         $gender = $this->genderService->findById($id);
-        if ($gender) {
+        if (!empty($gender)) {
             return response()->json($gender);
         } {
             return response()->json('somesthing was bad, check it', 400);

@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\GroupContrller;
-use App\Http\Controllers\GroupController;
+use App\Http\Controllers\PlayList_SampleController;
+use App\Http\Controllers\PlayListController;
+use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SoundContrller;
-use App\Http\Controllers\SoundController;
 use App\Http\Controllers\TypeContrller;
-use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,3 +49,20 @@ Route::post('/group', [GroupContrller::class, 'store']);
 Route::get('/group/{id}', [GroupContrller::class, 'show']);
 Route::put('/group/{id}', [GroupContrller::class, 'edit']);
 Route::delete('/group/{id}', [GroupContrller::class, 'destroy']);
+
+
+
+Route::post('/playList', [PlayListController::class, 'store']);
+Route::get('/playList/{id}', [PlayListController::class, 'show']);
+Route::put('/playList/{id}', [PlayListController::class, 'edit']);
+Route::delete('/playList/{id}', [PlayListController::class, 'destroy']);
+
+
+
+Route::post('/sample', [SampleController::class, 'store']);
+Route::get('/sample', [SampleController::class, 'show']);
+Route::put('/sample/{id}', [SampleController::class, 'edit']);
+Route::get('/sample/byfilter', [SampleController::class, 'showByFilter']);
+
+
+Route::post('/playlist_sample', [PlayList_SampleController::class, 'create']);
