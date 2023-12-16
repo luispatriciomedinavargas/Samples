@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('samples', function (Blueprint $table) {
-     
-        $table->unsignedBigInteger('group_id')->nullable();
-        $table->foreign('group_id')->references('id')->on('groups');
-        $table->unsignedBigInteger('type_id')->nullable();
-        $table->foreign('type_id')->references('id')->on('types');
-        $table->unsignedBigInteger('gender_id')->nullable();
-        $table->foreign('gender_id')->references('id')->on('genders');
-        $table->unsignedBigInteger('sound_id')->nullable();
-        $table->foreign('sound_id')->references('id')->on('sounds');
-    });
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->foreign('group_id')->references('id')->on('groups');
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->foreign('type_id')->references('id')->on('types');
+            $table->unsignedBigInteger('gender_id')->nullable();
+            $table->foreign('gender_id')->references('id')->on('genders');
+            $table->unsignedBigInteger('sound_id')->nullable();
+            $table->foreign('sound_id')->references('id')->on('sounds');
+        });
     }
 
     /**
@@ -29,6 +28,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('samples' , function(Blueprint $table){
+            $table->dropForeign('samples_group_id_foreign');
+            $table->dropForeign('samples_type_id_foreign');
+            $table->dropForeign('samples_gender_id_foreign');
+            $table->dropForeign('samples_sound_id_foreign');
+        });
     }
 };
