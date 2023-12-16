@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sounds', function(Blueprint $table){
-            
+
             $table->id();
             $table->string('description', 100);
             $table->softDeletes()->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('sounds');
     }
 };
