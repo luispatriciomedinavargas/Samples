@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\GenderController;
 use App\Http\Controllers\GroupContrller;
 use App\Http\Controllers\PlayList_SampleController;
@@ -63,6 +64,14 @@ Route::post('/sample', [SampleController::class, 'store']);
 Route::get('/sample', [SampleController::class, 'show']);
 Route::put('/sample/{id}', [SampleController::class, 'edit']);
 Route::get('/sample/byfilter', [SampleController::class, 'showByFilter']);
+
+
+Route::get('/address', [AddressController::class, 'showAll']);
+Route::post('/address', [AddressController::class, 'store']);
+Route::get('/address/{id}', [AddressController::class, 'show']);
+Route::put('/address/{id}', [AddressController::class, 'edit']);
+Route::delete('/address/{id}', [AddressController::class, 'destroy']);
+
 
 
 Route::post('/playlist_sample', [PlayList_SampleController::class, 'create']);

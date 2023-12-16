@@ -37,7 +37,7 @@ class PlayList_SampleController extends Controller
         return response()->Json($findByPlaylist, 200);
     }
     public function findBySample($idSample)
-    {
+    {  
         $findBySample = $this->playList_SampleService->findBySample($idSample);
         return response()->Json($findBySample, 200);
     }
