@@ -31,7 +31,8 @@ class SamplesService
 
     public function updateSample($data, Sample $SampleId)
     {
-        $test= $SampleId->update($data);
+        return $SampleId->update($data);
+    
     }
 
     public function findSamples($data)

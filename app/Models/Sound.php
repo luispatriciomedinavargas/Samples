@@ -6,6 +6,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @OA\Schema(
+ *     title="Sound",
+ *     description="Sound model",
+ *     @OA\Xml(
+ *         name="Sound"
+ *     ),
+ *  * @OA\Property(
+ *     property="description",
+ *     title="description",
+ *     description="description of the Sound",
+ *     format="string",
+ * )
+ * )
+ * @OA\Required({"description"})
+ */
+
 class Sound extends Model
 {
     use HasFactory;

@@ -20,6 +20,7 @@ class TypeService
     
     public function deleteType($id)
     {
+        \Log::error($id);
         $type = type::find($id);
         $type->delete();
         return $type;
