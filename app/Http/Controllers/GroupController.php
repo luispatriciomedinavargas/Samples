@@ -3,31 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gender;
-use App\Services\GenderService;
+use App\Models\Group;
+use App\Services\GroupService;
 use Illuminate\Http\Request;
 
-class GenderController extends Controller
+class GroupController extends Controller
 {
-
-
-
-    protected $genderService;
-    public function __construct(GenderService $genderService)
+    protected $groupService;
+    public function __construct(GroupService $groupService)
     {
-        $this->genderService = $genderService;
+        $this->groupService = $groupService;
     }
 
 
-   
+
+
     /**
      * Store a newly created resource in storage.
      */
-    /**
+        /**
      * @OA\Post(
-     *     path="/gender",
-     *     summary="Create a gender to insert into DB",
-     *     tags={"Genders"},
+     *     path="/group",
+     *     summary="Create a group to insert into DB",
+     *     tags={"Groups"},
      *     @OA\RequestBody(
      *         description=" the description should be at least 4 character.",
      *         required=true,
@@ -43,9 +41,10 @@ class GenderController extends Controller
         $request->validate([
             'description' => 'required|max:100|min:4'
         ]);
-        $gender = $this->genderService->createGender($request->all());
-        if ($gender) {
-            return response()->json($gender,200);
+
+        $group = $this->groupService->createGroup($request->all());
+        if ($group) {
+            return response()->json($group);
         } {
             return response()->json('somesthing was bad, check  it', 400);
         }
@@ -54,11 +53,11 @@ class GenderController extends Controller
     /**
      * Display the specified resource.
      */
-     /**
+            /**
      * @OA\Get(
-     *     path="/gender/{id}",
+     *     path="/group/{id}",
      *     summary="get one resource",
-     *     tags={"Genders"},
+     *     tags={"Groups"},
      *      @OA\Parameter(
      *          name="id",
      *          description="Gender's id",
@@ -66,7 +65,7 @@ class GenderController extends Controller
      *          in="path",
      *          @OA\Schema(
      *              type="integer",
-     *               example=1
+     *              example=1
      *          )
      *      ),
      *      @OA\Response(
@@ -81,9 +80,9 @@ class GenderController extends Controller
     {
 
 
-        $gender = $this->genderService->findById($id);
-        if (!empty($gender)) {
-            return response()->json($gender);
+        $group = $this->groupService->findById($id);
+        if (!empty($group)) {
+            return response()->json($group);
         } {
             return response()->json('somesthing was bad, check it', 400);
         }
@@ -92,19 +91,19 @@ class GenderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    /**
+        /**
      * @OA\Put(
-     *   path="/gender/{id}",
+     *   path="/group/{id}",
      *   summary="edit a resource from db",
      *   @OA\RequestBody(
      *         description=" the description should be at least 4 character.",
      *         required=true,
      *         @OA\JsonContent(ref="#/components/schemas/Gender")
      *     ),
-     *   tags={"Genders"},
+     *   tags={"Groups"},
      *      @OA\Parameter(
      *          name="id",
-     *          description="Genders id",
+     *          description="Groups id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -120,16 +119,16 @@ class GenderController extends Controller
      *     @OA\Response(response=400, description="Invalid request"),
      * 
      * )
-     */
-    public function edit(Request $request, Gender $id)
+ */
+    public function edit(Request $request, Group $id)
     {
 
         $request->validate([
             'description' => 'required|max:100|min:4'
         ]);
 
-        $gender = $this->genderService->updateGender($request->all(), $id);
-        if ($gender) {
+        $group = $this->groupService->updateGroup($request->all(), $id);
+        if ($group) {
             return response()->json('The id ' . $id->id . ' was updated correctly');
         } {
             return response()->json('somesthing was bad, check it', 400);
@@ -140,14 +139,17 @@ class GenderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+        /**
+     * Remove the specified resource from storage.
+     */
      /**
      * @OA\Delete(
-     *     path="/gender/{id}",
+     *     path="/group/{id}",
      *     summary="edit a resource from db",
-     *     tags={"Genders"},
+     *     tags={"Groups"},
      *      @OA\Parameter(
      *          name="id",
-     *          description="Genders id",
+     *          description="Groups id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
@@ -166,9 +168,9 @@ class GenderController extends Controller
     public function destroy(string $id)
     {
 
-        $gender = $this->genderService->deleteGender($id);
+        $group = $this->groupService->deleteGroup($id);
 
-        if ($gender) {
+        if ($group) {
             return response()->json('The id ' . $id . ' was deleted correctly');
         } {
             return response()->json('somesthing was bad, check it', 400);
@@ -176,9 +178,9 @@ class GenderController extends Controller
     }
      /**
      * @OA\Get(
-     *     path="/gender",
+     *     path="/group",
      *     summary="Show all resource from DB",
-     *     tags={"Genders"},
+     *     tags={"Groups"},
      *     @OA\Response(response=200, description="Successful operation")
      * )
      */
@@ -186,6 +188,6 @@ class GenderController extends Controller
     {
 
 
-        return response()->json($this->genderService->returnAllGenders());
+        return response()->json($this->groupService->returnAllGroups());
     }
 }
