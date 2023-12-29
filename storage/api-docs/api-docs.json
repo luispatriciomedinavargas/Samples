@@ -5,6 +5,167 @@
         "version": "0.1"
     },
     "paths": {
+        "/address": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "e71c0be97207cfb1d8571f03277aec43",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Create a address to insert into DB",
+                "operationId": "d147bdca0bba9a5aefa8097adfef4971",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Street fake 123456"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/address/{id}": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "get one resource",
+                "operationId": "6f3c21f11460bcc1ed31a13041e4e240",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "369079bef858f8c73e3b331a7ef28a37",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Street fake 123456"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "b22408dc245e130de9ec36e3572e612c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
         "/gender": {
             "get": {
                 "tags": [
@@ -550,7 +711,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "PlayListSample's id",
+                        "description": "Sample's id",
                         "required": true,
                         "schema": {
                             "type": "integer",
@@ -813,6 +974,18 @@
             }
         },
         "/sound": {
+            "get": {
+                "tags": [
+                    "Sounds"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "b7fb97374e0d7c87d8c18704e51b2692",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "Sounds"
@@ -1105,6 +1278,26 @@
     },
     "components": {
         "schemas": {
+            "Address": {
+                "title": "Address",
+                "description": "Address model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Address",
+                        "format": "string"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "the User´s id that belongs to address",
+                        "format": "number"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Address"
+                }
+            },
             "Gender": {
                 "title": "Gender",
                 "description": "Gender model",
