@@ -1,0 +1,1473 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/address": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "e71c0be97207cfb1d8571f03277aec43",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Create a address to insert into DB",
+                "operationId": "d147bdca0bba9a5aefa8097adfef4971",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Street fake 123456"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/address/{id}": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "get one resource",
+                "operationId": "6f3c21f11460bcc1ed31a13041e4e240",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "369079bef858f8c73e3b331a7ef28a37",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Street fake 123456"
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Address"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "b22408dc245e130de9ec36e3572e612c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/gender": {
+            "get": {
+                "tags": [
+                    "Genders"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "43497f0412dfc665a50ef2e13645eadb",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Genders"
+                ],
+                "summary": "Create a gender to insert into DB",
+                "operationId": "7f8f409bb5202a0c7543e5fdc3482d73",
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gender"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/gender/{id}": {
+            "get": {
+                "tags": [
+                    "Genders"
+                ],
+                "summary": "get one resource",
+                "operationId": "e8af0ab3dc8e683c2f732f637c6ad39f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Gender's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gender"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Genders"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "155a2a37982ee154ba723939c4dd6807",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Genders id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gender"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gender"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Genders"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "f89f570348ff187f76b4d1315cc188a0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Genders id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/group": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "d1ef8afc3d9317618c54d75fa5663d28",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "Create a group to insert into DB",
+                "operationId": "e4177fdb8c798f4607f383faade958a2",
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gender"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/group/{id}": {
+            "get": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "get one resource",
+                "operationId": "493ecdf27d6748ca0f27a2647e91c9dd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Gender's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gender"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "ad7be0c254dbd6c7f91e32b6f5246bb9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Groups id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gender"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gender"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Groups"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "46eb6481112edc002da8139e138951b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Groups id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/playList": {
+            "post": {
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Create a playlist to insert into DB",
+                "operationId": "618a6531dddc5fe1e95747d5ada6ac62",
+                "requestBody": {
+                    "description": "The name should be at least 6 characters.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "The name of the playlist. It should be at least 6 characters.",
+                                        "type": "string",
+                                        "example": "MyPlaylist"
+                                    },
+                                    "user_id": {
+                                        "description": "The user ID who made the playlist.",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/playList/{id}": {
+            "get": {
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "get one resource",
+                "operationId": "89a4179f42c4a65a7b8ecf5ea0ffbf6b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Edit a playlist in DB",
+                "operationId": "6b2e756226d27f7bc3d575d3e3088564",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The name should be at least 6 characters.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "The name of the playlist. It should be at least 6 characters.",
+                                        "type": "string",
+                                        "example": "MyPlaylist"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Delete an Playlist from DB",
+                "operationId": "e893bf589a3e0eb88c1a86eb3c763f3f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/playlist_sample": {
+            "post": {
+                "tags": [
+                    "PlayListSample"
+                ],
+                "summary": "Create an PlayList_sample to DB",
+                "operationId": "424a74771bb356b3221e4ee90913a924",
+                "requestBody": {
+                    "description": "Details of the new playlist_sample to be created",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "playlist_id": {
+                                        "description": "The id of the playlist",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "samples_id": {
+                                        "description": "The id of the sample",
+                                        "type": "integer",
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/playlist_sample/playlist/{id}": {
+            "get": {
+                "tags": [
+                    "PlayListSample"
+                ],
+                "summary": "get one resource",
+                "operationId": "196597b24cee0f1e79f96b1044b25d16",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "PlayList's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlayListSample"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/playlist_sample/sample/{id}": {
+            "get": {
+                "tags": [
+                    "PlayListSample"
+                ],
+                "summary": "get one resource",
+                "operationId": "46adf4c88c78c7747ac4a870ddac5e70",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sample's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PlayListSample"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/sample": {
+            "post": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Create a sample to insert into DB",
+                "operationId": "def508f140e58f59d25965746d4aa97c",
+                "requestBody": {
+                    "description": "The description should be at least 10 characters.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "description": "The description of the sample. It should be at least 10 characters and at most 100 characters.",
+                                        "type": "string",
+                                        "example": "test 123456"
+                                    },
+                                    "url": {
+                                        "description": "The URL where it is stored.",
+                                        "type": "string",
+                                        "example": "nani.com"
+                                    },
+                                    "price": {
+                                        "description": "The cost. It should be a numeric value with up to 2 decimal places.",
+                                        "type": "number",
+                                        "example": 2
+                                    },
+                                    "group_id": {
+                                        "description": "The Group's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "type_id": {
+                                        "description": "The Type's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "gender_id": {
+                                        "description": "The Gender's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "sound_id": {
+                                        "description": "The Sound's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/sample/": {
+            "get": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "get all resource",
+                "operationId": "4ea645f3b36e3080c29f8661989de4f9",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sample"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/sample/{id}": {
+            "put": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Edit a sample",
+                "operationId": "c11983f40dcdb3b3305ad90f53ab5c1c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sample's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "The description should be at least 10 characters.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "description": "The description of the sample. It should be at least 10 characters and at most 100 characters.",
+                                        "type": "string",
+                                        "example": "test 123456"
+                                    },
+                                    "url": {
+                                        "description": "The URL where it is stored.",
+                                        "type": "string",
+                                        "example": "nani.com"
+                                    },
+                                    "price": {
+                                        "description": "The cost. It should be a numeric value with up to 2 decimal places.",
+                                        "type": "number",
+                                        "example": 2
+                                    },
+                                    "group_id": {
+                                        "description": "The Group's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "type_id": {
+                                        "description": "The Type's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "gender_id": {
+                                        "description": "The Gender's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "sound_id": {
+                                        "description": "The Sound's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/sample/byfilter": {
+            "post": {
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Fetch a sample from DB",
+                "operationId": "2381b2abbd62413a504e493ad0c2b685",
+                "requestBody": {
+                    "description": "The description should be at least 10 characters.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "group_id": {
+                                        "description": "The Group's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "type_id": {
+                                        "description": "The Type's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "gender_id": {
+                                        "description": "The Gender's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    },
+                                    "sound_id": {
+                                        "description": "The Sound's ID which it belongs to. This is an optional field.",
+                                        "type": "integer",
+                                        "example": 1,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/sound": {
+            "get": {
+                "tags": [
+                    "Sounds"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "b7fb97374e0d7c87d8c18704e51b2692",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sounds"
+                ],
+                "summary": "Create a sound to insert into DB",
+                "operationId": "2156b690b5da05ff3098abd759136baa",
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Sound"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/sound/{id}": {
+            "get": {
+                "tags": [
+                    "Sounds"
+                ],
+                "summary": "get one resource",
+                "operationId": "d6e6fa87e3f92ef584fba6e8231cdfc2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sound's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sound"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Sounds"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "3a53c40f8dbf54329dbcf3dbda7e7de0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sounds id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Sound"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Sound"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sounds"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "5541ca8ad98054311d3ff618e2201dea",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Sounds id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/type": {
+            "get": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Show all resource from DB",
+                "operationId": "a0b4f79d8f8d3b3ec2ea64168f0b92bd",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "Create a type to insert into DB",
+                "operationId": "d50e7c4c2e30cf78915446eb1edce1ec",
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gender"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/type/{id}": {
+            "get": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "get one resource",
+                "operationId": "21e37d7490a584a32693d79fbe0cf466",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Gender's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gender"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "f446c9d715b03de657274fef7603fdd4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Types id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": " the description should be at least 4 character.",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Gender"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Gender"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Types"
+                ],
+                "summary": "edit a resource from db",
+                "operationId": "c62846a951e9a0bf61a91113a9cb97ff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Types id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 2
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Address": {
+                "title": "Address",
+                "description": "Address model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Address",
+                        "format": "string"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "the User´s id that belongs to address",
+                        "format": "number"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Address"
+                }
+            },
+            "Gender": {
+                "title": "Gender",
+                "description": "Gender model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Gender",
+                        "format": "Jazz"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Gender"
+                }
+            },
+            "Group": {
+                "title": "Group",
+                "description": "Group model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the PlayList",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Group"
+                }
+            },
+            "PlayList": {
+                "title": "Playlist",
+                "description": "Playlist model",
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "description of the PayList",
+                        "format": "string"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "The user Id Who made the playlist",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Playlist"
+                }
+            },
+            "PlayListSample": {
+                "title": "PlayListSample",
+                "description": "PlayListSample model. Here we do relationship beetween playlist and sample",
+                "properties": {
+                    "playlist_id": {
+                        "title": "playlist_id",
+                        "description": "Playlist´s id",
+                        "format": "number"
+                    },
+                    "samples_id": {
+                        "title": "samples_id",
+                        "description": "Samples´s id",
+                        "format": "number"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PlayListSample"
+                }
+            },
+            "Sample": {
+                "title": "Sample",
+                "description": "Sample model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Sample",
+                        "format": "string"
+                    },
+                    "url": {
+                        "title": "url",
+                        "description": "the url where it is storage",
+                        "format": "string"
+                    },
+                    "price": {
+                        "title": "price",
+                        "description": "how many cost it",
+                        "format": "string"
+                    },
+                    "group_id": {
+                        "title": "group_id",
+                        "description": "the Group´s which belong",
+                        "format": "string"
+                    },
+                    "type_id": {
+                        "title": "type_id",
+                        "description": "the Type´s which belong",
+                        "format": "string"
+                    },
+                    "gender_id": {
+                        "title": "gender_id",
+                        "description": "the Gender´s which belong",
+                        "format": "string"
+                    },
+                    "sound_id": {
+                        "title": "sound_id",
+                        "description": "the Sound´s which belong",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Sample"
+                }
+            },
+            "Sound": {
+                "title": "Sound",
+                "description": "Sound model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Sound",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Sound"
+                }
+            },
+            "Type": {
+                "title": "Type",
+                "description": "Type model",
+                "properties": {
+                    "description": {
+                        "title": "description",
+                        "description": "description of the Type",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Type"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "Name": {
+                        "title": "Name",
+                        "description": "Name of the User",
+                        "format": "string"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the User",
+                        "format": "string"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of the User",
+                        "format": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            }
+        }
+    }
+}

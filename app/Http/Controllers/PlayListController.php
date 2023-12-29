@@ -22,6 +22,26 @@ class PlayListController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    /**
+     * @OA\Post(
+     *     path="/playList",
+     *     summary="Create a playlist to insert into DB",
+     *     tags={"Playlist"},
+     *     @OA\RequestBody(
+     *         description="The name should be at least 6 characters.",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string", description="The name of the playlist. It should be at least 6 characters.", example="MyPlaylist"),
+     *             @OA\Property(property="user_id", type="integer", description="The user ID who made the playlist.", example=1)
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=422, description="Unprocessable Content")
+     * )
+     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -40,6 +60,27 @@ class PlayListController extends Controller
     /**
      * Display the specified resource.
      */
+
+    /**
+     * @OA\Get(
+     *     path="/playList/{id}",
+     *     summary="get one resource",
+     *     tags={"Playlist"},
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="User's id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer",
+     *               example=1
+     *          )
+     *      ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=422, description="Unprocessable Content")
+     * )
+     */
     public function show(string $idUser)
     {
         $playList = $this->playListService->findByUser($idUser);
@@ -52,6 +93,34 @@ class PlayListController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     */
+    /**
+     * @OA\Put(
+     *     path="/playList/{id}",
+     *     summary="Edit a playlist in DB",
+     *     tags={"Playlist"},
+     *        @OA\Parameter(
+     *          name="id",
+     *          description="User's id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer",
+     *               example=1
+     *          )
+     *      ),
+     *     @OA\RequestBody(
+     *         description="The name should be at least 6 characters.",
+     *         required=true,
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string", description="The name of the playlist. It should be at least 6 characters.", example="MyPlaylist"),
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=422, description="Unprocessable Content")
+     * )
      */
     public function edit(Request $request, PlayList $id)
     {
@@ -69,6 +138,26 @@ class PlayListController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     */
+    /**
+     * @OA\Delete(
+     *     path="/playList/{id}",
+     *     summary="Delete an Playlist from DB",
+     *     tags={"Playlist"},
+     *     @OA\Parameter(
+     *          name="id",
+     *          description="User's id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer",
+     *               example=1
+     *          )
+     *      ),
+     *     @OA\Response(response=200, description="Successful operation"),
+     *     @OA\Response(response=400, description="Invalid request"),
+     *     @OA\Response(response=422, description="Unprocessable Content")
+     * )
      */
     public function destroy(string $id)
     {

@@ -1,12 +1,5 @@
 <?php
 
-use App\Http\Controllers\GenderController;
-use App\Http\Controllers\GroupContrller;
-use App\Http\Controllers\PlayList_SampleController;
-use App\Http\Controllers\PlayListController;
-use App\Http\Controllers\SampleController;
-use App\Http\Controllers\SoundContrller;
-use App\Http\Controllers\TypeContrller;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -27,3 +20,12 @@ Route::get('/', [AuthenticatedSessionController::class, 'create']);
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'gender.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'group.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'playlist_sample.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'playList.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'samples.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'sound.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'type.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'address.php';
