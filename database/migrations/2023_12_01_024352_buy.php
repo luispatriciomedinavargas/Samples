@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->date('date_buy');
             $table->string('method_pay',15);
-            $table->unsignedBigInteger('samples_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 

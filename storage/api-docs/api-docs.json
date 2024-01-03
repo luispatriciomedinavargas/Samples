@@ -166,6 +166,116 @@
                 }
             }
         },
+        "/buy": {
+            "get": {
+                "tags": [
+                    "BuyBill"
+                ],
+                "summary": "get all Buy-BuyBill to insert into DB",
+                "operationId": "be1d8cf6cb5c26c2a768a9c6110edea0",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "BuyBill"
+                ],
+                "summary": "Create a Buy-BuyBill to insert into DB",
+                "operationId": "bf51273ff0e8264ddd3a610654f55638",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "date_buy": {
+                                        "description": "the date when samples are buy.",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2024-01-01"
+                                    },
+                                    "method_pay": {
+                                        "description": "the method which pays the user",
+                                        "type": "string",
+                                        "example": "Paypal"
+                                    },
+                                    "user_id": {
+                                        "description": "The user ID who made the playlist.",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "idsample": {
+                                        "description": "The user ID who made the playlist.",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "integer"
+                                        },
+                                        "example": [
+                                            1,
+                                            2,
+                                            3
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/buy/{id}": {
+            "get": {
+                "tags": [
+                    "BuyBill"
+                ],
+                "summary": "get all Buy-BuyBill to insert into DB",
+                "operationId": "3a9982b8f4fb7799b884ebe27c7d1f2f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Address's id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
         "/gender": {
             "get": {
                 "tags": [
@@ -1296,6 +1406,56 @@
                 "type": "object",
                 "xml": {
                     "name": "Address"
+                }
+            },
+            "Buy": {
+                "title": "Buy",
+                "description": "Buy model",
+                "properties": {
+                    "date_buy": {
+                        "title": "date_buy",
+                        "description": "the date when the sample is bought",
+                        "format": "string"
+                    },
+                    "method_pay": {
+                        "title": "method_pay",
+                        "description": "Which method is use to buy the sample",
+                        "format": "string"
+                    },
+                    "id": {
+                        "title": "ID",
+                        "description": "The Buy´s ID",
+                        "format": "number"
+                    },
+                    "user_id": {
+                        "title": "user_id",
+                        "description": "the User´s id that belongs to Buy",
+                        "format": "number"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Buy"
+                }
+            },
+            "BuyBill": {
+                "title": "BuyBill",
+                "description": "BuyBill model",
+                "properties": {
+                    "id_sample": {
+                        "title": "id_sample",
+                        "description": "the Sample´s id that belongs to Bill",
+                        "format": "number"
+                    },
+                    "id_buy": {
+                        "title": "id_buy",
+                        "description": "the Buy´s id that belongs to Bill",
+                        "format": "number"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BuyBill"
                 }
             },
             "Gender": {

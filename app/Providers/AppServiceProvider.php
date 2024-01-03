@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Address;
+use App\Models\Buy;
+use App\Models\BuyBill;
 use App\Models\Gender;
 use App\Models\Group;
 use App\Models\PlayList;
@@ -11,6 +13,7 @@ use App\Models\Sample;
 use App\Models\Sound;
 use App\Models\Type;
 use App\Services\AddressService;
+use App\Services\BuyBillService;
 use App\Services\GenderService;
 use App\Services\GroupService;
 use App\Services\PlayListService;
@@ -44,6 +47,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(Address::class, Address::class);
         $this->app->bind(PlayList_SampleService::class, PlayList_SampleService::class);
         $this->app->bind(PlayListSample::class, PlayListSample::class);
+        $this->app->bind(BuyBillService::class, BuyBillService::class);
+        $this->app->bind(Buy::class, Buy::class);
+        $this->app->bind(BuyBill::class, BuyBill::class);
     }
 
     /**
