@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Payments\OtherPaymentController;
+use App\Http\Controllers\Payments\PayPalController;
 use App\Models\Address;
 use App\Models\Buy;
 use App\Models\BuyBill;
@@ -16,6 +18,7 @@ use App\Services\AddressService;
 use App\Services\BuyBillService;
 use App\Services\GenderService;
 use App\Services\GroupService;
+use App\Services\PaymentService;
 use App\Services\PlayListService;
 use App\Services\SamplesService;
 use App\Services\SoundService;
@@ -50,6 +53,16 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BuyBillService::class, BuyBillService::class);
         $this->app->bind(Buy::class, Buy::class);
         $this->app->bind(BuyBill::class, BuyBill::class);
+        $this->app->when(PayPalController::class)
+          ->needs(PaymentService::class)
+          ->give(function () {
+              return PaymentService::paypal();
+          });
+          $this->app->when(OtherPaymentController::class)
+          ->needs(PaymentService::class)
+          ->give(function () {
+              return PaymentService::otherImplementation();
+          });
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\Payments\PayPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,9 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'sound.
 require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'type.php';
 require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'address.php';
 require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'buy.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'otherPayment.php';
+
+Route::get('/paypal', [PayPalController::class,'ShowPaypalForm']);
+Route::post('/paypal/status', [PayPalController::class,'createOrder']);
+Route::post('paypalStatus' , [PayPalController::class , 'paypalStatus']);
+
